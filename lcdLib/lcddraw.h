@@ -22,7 +22,8 @@ void drawPixel(u_char col, u_char row, u_int colorBGR);
  *  \param colorBGR Color of rectangle in BGR
  */
 void fillRectangle(u_char colMin, u_char rowMin, u_char width, u_char height, u_int colorBGR);
-
+void drawFish(u_char col, u_char row, u_int color, u_char center);
+void draw_diamon(u_char col, u_char row, u_char size, u_int color1);
 /** Clear screen (fill with color)
  *  
  *  \param colorBGR The color to fill screen
@@ -44,12 +45,13 @@ void clearScreen(u_int colorBGR);
 void drawString5x7(u_char col, u_char row, char *string, 
 		   u_int fgColorBGR, u_int bgColorBGR);
 
+void drawString11x16(u_char col, u_char row, char *string, u_int fgColorBGR, u_int bgColorBGR);
 /** 5x7 font - this function draws background pixels
  *  Adapted from RobG's EduKit
  */
 void drawChar5x7(u_char col, u_char row, char c, 
 		 u_int fgColorBGR, u_int bgColorBGR);
-
+void drawChar11x16(u_char rcol, u_char rrow, char c, u_int fgColorBGR, u_int bgColorBGR);
 /** Draw rectangle outline
  *  
  *  \param colMin Column start
