@@ -37,6 +37,43 @@ void fillRectangle(u_char colMin, u_char rowMin, u_char width, u_char height,
   }
 }
 
+/* draw a fish */
+void drawFish(u_char col, u_char row, u_int color, u_char center)
+{
+  u_char r;
+  u_char c;
+
+  //tail of fish
+  for(r = center; r > 0; r--){
+    for(c = center; c >= r; c--){
+      drawPixel(col + c, row + r, color);
+      drawPixel(col + c, row-r+1, color);
+    }
+  }
+
+  //body
+  fillRectangle(col-(center*2-center/2), row-center/2, center*2, center, color);
+  //eye
+  fillRectangle(col-center-center/4, row-center/4, center/4, center/4, COLOR_BLACK);
+  // fin
+  for(r = center/2; r >0; r--){
+    for(c = center/2; c >= r; c--){
+      drawPixel(col/2 + c, row + center/4+r, COLOR_RED);
+    }
+  }
+}
+
+/*draw diamond*/
+void draw_diamond(u_char col, u_char row, u_char size, u_int color1){
+  for(u_char r = 0; r < size; r++){
+    for(u_char c = 0; c < r; c++){
+      drawPixel(col-c, row-r-1, color1);
+      drawPixel(col-c, row+r-(2*size), color1);
+      drawPixel(col+c, row-r-1, color1);
+      drawPixel(col+c, row+r-(2*size), color1);
+    }
+  }
+}
 /** Clear screen (fill with color)
  *  
  *  \param colorBGR The color to fill screen
