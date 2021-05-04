@@ -43,18 +43,16 @@ void wdt_c_handler(){
       count = 0;
     }
    }
+   if(button_state == 3){
+    if(++count3 == 64){ //1/4 
+      count3 = 0;
+      redrawScreen = 1;
+    }
+  }
    if(++count2 == 125){ //half a second
     state_advance();
     count2 = 0;
-    count++;
     redrawScreen = 1;
-  }
-  if(button_state == 4){
-    if(++count3 == 250){
-      count3 = 0;
-      //fontFgColor = (fontFgColor == COLOR_PURPLE) ? COLOR_BLACK : COLOR_PURPLE;
-      redrawScreen = 1;
-    }
   }
 }
 
