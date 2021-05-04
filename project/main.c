@@ -8,28 +8,6 @@
 #include "led.h"
 
 short redrawScreen = 1;
-u_int fontFgColor = COLOR_PURPLE;
-long COLOR1;
-long COLOR2;
-
-static int prev = 0;
-
-u_char centerWidth = (screenWidth/2) + 1;
-u_char centerHeight = (screenHeight/2) + 1;
-
-static u_char colorState = 0;
-/*
-void draw_diamond(u_char col, u_char row, u_char size, u_int color1){  
-      for(u_char r = 0; r < size; r++){
-	for(u_char c = 0; c < r; c++){
-	  drawPixel(col-c, row-r-1, color1);
-	  drawPixel(col-c, row+r-(2*size), color1);
-	  drawPixel(col+c, row-r-1, color1);
-	  drawPixel(col+c, row+r-(2*size), color1);
-	}
-      }
-}
-*/
 
 void wdt_c_handler(){
   static int count = 0;
