@@ -46,7 +46,7 @@ short get_period(short freq){
 
 // blinks green led while playing sounds from buzzer advance 
 char state1(){
- drawString11x16(30, 10, "1 fish", COLOR_GREEN, COLOR_RED);
+// drawString11x16(30, 10, "1 fish", COLOR_GREEN, COLOR_RED);
   switch(state){
   case 0:
     clearScreen(COLOR_BLUE);
@@ -57,7 +57,7 @@ char state1(){
   case 1:
     clearScreen(COLOR_BLUE);
     red_on = 0;
-    drawFish(70, 50, COLOR_ORANGE, 20);
+    drawFish(70, 90, COLOR_ORANGE, 20);
     state = 0; 
     break;
 }
@@ -67,20 +67,21 @@ return 1;
 
 // red led flashes 
 char state2(){
+//green_on = 0;
   switch(state){
   case 0:
     clearScreen(COLOR_BLACK);
     green_on = 1;
     drawFish(40, 50, COLOR_BLUE, 20);
-    drawFish(50, 50, COLOR_ORANGE, 20);
+    drawFish(80, 20, COLOR_ORANGE, 20);
     state = 1;
     buzzer_set_period(1000);
     break;
   case 1:
     clearScreen(COLOR_BLACK);
     green_on = 0;
-    drawFish(40, 50, COLOR_BLUE, 20);
-    drawFish(50, 50, COLOR_ORANGE, 20);
+    drawFish(80, 50, COLOR_BLUE, 20);
+    drawFish(40, 80, COLOR_ORANGE, 20);
     state = 0;
     buzzer_set_period(0);
     break;
@@ -90,23 +91,24 @@ return 1;
 
 // red and green toggle
 char state3(){
+green_on = 0;
   char changed = 0;
   static enum {R=0, G=1} color = G;
   switch(color){
   case R:
-    clearScreen(COLOR_RED);
+    clearScreen(COLOR_PINK);
     changed = toggle_red();
-    drawFish(40, 50, COLOR_BLUE, 20);
-    drawFish(50, 50, COLOR_ORANGE, 20);
-    drawFish(60, 50, COLOR_WHITE, 20);
+    drawFish(30, 50, COLOR_BLUE, 20);
+    drawFish(90, 30, COLOR_ORANGE, 20);
+    drawFish(60, 10, COLOR_WHITE, 20);
     color = G;
     buzzer_set_period(2000);
     break;
   case G:
-    clearScreen(COLOR_RED);
-    drawFish(50, 50, COLOR_BLUE, 20);
+    clearScreen(COLOR_PINK);
+    drawFish(90, 10, COLOR_BLUE, 20);
     drawFish(60, 50, COLOR_ORANGE, 20);
-    drawFish(70, 50, COLOR_WHITE, 20);
+    drawFish(30, 30, COLOR_WHITE, 20);
     changed = toggle_green();
     color = R;
     buzzer_set_period(1000);
@@ -119,6 +121,7 @@ char state3(){
 
 // turns off leds 
 char state4(){
+  drawString11x16(20,20, "No Fish", COLOR_GREEN, COLOR_BLACK);
   green_on = 0;
   red_on = 0;
   buzzer_set_period(0);
